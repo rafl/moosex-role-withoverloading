@@ -2,7 +2,6 @@ package MooseX::Role::WithOverloading::Meta::Role::Application::ToClass;
 
 use Moose;
 use overload ();
-use Sub::Identify qw/get_code_info/;
 use MooseX::Types::Moose qw/ArrayRef Str/;
 use namespace::autoclean;
 
@@ -36,7 +35,7 @@ after apply_methods => sub {
         my $meth = $role->get_package_symbol($code_sym);
         next unless $meth;
 
-        if (join(q{::} => get_code_info($meth)) eq 'overload::nil') {
+        if ($meth == \&overload::nil) {
             my $scalar_sym = qq{\$($op};
             $class->add_package_symbol($code_sym => $meth);
             $class->add_package_symbol(
