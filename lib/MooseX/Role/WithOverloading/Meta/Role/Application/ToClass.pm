@@ -1,11 +1,9 @@
 package MooseX::Role::WithOverloading::Meta::Role::Application::ToClass;
 
-use Moose;
+use Moose::Role;
 use overload ();
 use MooseX::Types::Moose qw/ArrayRef Str/;
 use namespace::autoclean;
-
-extends 'Moose::Meta::Role::Application::ToClass';
 
 has overload_ops => (
     is      => 'ro',
