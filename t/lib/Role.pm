@@ -4,7 +4,7 @@ use MooseX::Role::WithOverloading;
 use namespace::clean -except => 'meta';
 
 use overload
-    q{""}    => 'message',
+    q{""}    => 'as_string',
     fallback => 1;
 
 has message => (
@@ -12,5 +12,7 @@ has message => (
     isa      => 'Str',
     required => 1,
 );
+
+sub as_string { shift->message }
 
 1;
