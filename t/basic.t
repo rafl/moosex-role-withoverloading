@@ -1,16 +1,22 @@
 use strict;
 use warnings;
 use Test::More;
+use overload ();
 
 use FindBin;
 use lib "$FindBin::Bin/lib";
 
-BEGIN { use_ok('Class') }
+BEGIN { use_ok('SomeClass') }
 
-ok(Class->meta->does_role('Role'));
+ok(SomeClass->meta->does_role('Role'));
 
-my $foo = Class->new({ message => 'foo' });
-isa_ok($foo, 'Class');
+ok(overload::Overloaded('Role'));
+ok(overload::Overloaded('SomeClass'));
+ok(overload::Method('Role', q{""}));
+ok(overload::Method('SomeClass', q{""}));
+
+my $foo = SomeClass->new({ message => 'foo' });
+isa_ok($foo, 'SomeClass');
 is($foo->message, 'foo');
 
 my $str = "${foo}";
