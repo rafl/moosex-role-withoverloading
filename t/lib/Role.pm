@@ -8,9 +8,8 @@ use overload
     fallback => 1;
 
 has message => (
-    is       => 'ro',
+    is       => 'rw',
     isa      => 'Str',
-    required => 1,
 );
 
 sub as_string { shift->message }
