@@ -17,6 +17,11 @@ sub _build_overload_ops {
 
 after apply_methods => sub {
     my ($self, $role, $other) = @_;
+    $self->apply_overloading($role, $other);
+};
+
+sub apply_overloading {
+    my ($self, $role, $other) = @_;
     return unless overload::Overloaded($role->name);
 
     $other->add_package_symbol('&()' => $role->get_package_symbol('&()'));
@@ -46,6 +51,6 @@ after apply_methods => sub {
             $other->add_package_symbol(qq{&($op} => $meth);
         }
     }
-};
+}
 
 1;
