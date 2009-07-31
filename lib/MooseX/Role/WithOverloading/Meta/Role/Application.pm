@@ -53,7 +53,7 @@ sub apply_overloading {
         }
         # use overload $op => sub { ... };
         else {
-            $other->add_package_symbol(qq{&($op} => $meth);
+            $other->add_package_symbol($code_sym => $meth);
         }
     }
 }
