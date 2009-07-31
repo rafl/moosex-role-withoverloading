@@ -41,16 +41,18 @@ sub apply_overloading {
         my $meth = $role->get_package_symbol($code_sym);
         next unless $meth;
 
+        # use overload $op => 'method_name';
         if ($meth == \&overload::nil) {
-            # use overload $op => 'method_name';
             my $scalar_sym = qq{\$($op};
+            # overload::nil as the predicate for overloading with a method name
             $other->add_package_symbol($code_sym => $meth);
+            # and the actual method name in the scalar slot of the same glob
             $other->add_package_symbol(
                 $scalar_sym => ${ $role->get_package_symbol($scalar_sym) },
             );
         }
+        # use overload $op => sub { ... };
         else {
-            # use overload $op => sub { ... };
             $other->add_package_symbol(qq{&($op} => $meth);
         }
     }
