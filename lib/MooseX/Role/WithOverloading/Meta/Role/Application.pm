@@ -29,7 +29,7 @@ sub apply_overloading {
         if $role->has_package_symbol('$()');
     # TODO: figure out why the mop variant doesn't work
     # $other->namespace->{OVERLOAD}->{dummy}++;
-    { no strict 'refs'; ${ $other->name . '::OVERLOAD' }{dummy}++; } 
+    { no strict 'refs'; ${ $other->name . '::OVERLOAD' }{dummy}++; }
 
     for my $op (@{ $self->overload_ops }) {
         my $code_sym = '&(' . $op;

@@ -9,13 +9,15 @@ with 'MooseX::Role::WithOverloading::Meta::Role::Application';
 
 around apply => sub {
     my ($next, $self, $role1, $role2) = @_;
-    $role2 = Moose::Util::MetaRole::apply_metaclass_roles(
-        for_class                           => $role2->name,
-        application_to_class_class_roles    => [ ToClass     ],
-        application_to_role_class_roles     => [ __PACKAGE__ ],
-        application_to_instance_class_roles => [ ToInstance  ],
+    return $self->$next(
+        $role1,
+        Moose::Util::MetaRole::apply_metaclass_roles(
+            for                                 => $role2,
+            application_to_class_class_roles    => [ ToClass     ],
+            application_to_role_class_roles     => [ __PACKAGE__ ],
+            application_to_instance_class_roles => [ ToInstance  ],
+        ),
     );
-    return $self->$next($role1, $role2);
 };
 
 1;

@@ -17,7 +17,7 @@ sub init_meta {
     my $meta = Moose::Role->init_meta(%opts);
 
     return Moose::Util::MetaRole::apply_metaclass_roles(
-        for_class                           => $opts{for_class},
+        for                                 => $meta,
         metaclass_roles                     => [ MetaRole   ],
         application_to_class_class_roles    => [ ToClass    ],
         application_to_role_class_roles     => [ ToRole     ],

@@ -6,7 +6,6 @@ use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::Composite::
 use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::Composite::ToRole';
 use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::Composite::ToInstance';
 
-
 use namespace::clean -except => 'meta';
 
 around apply_params => sub {
