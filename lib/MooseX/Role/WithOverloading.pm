@@ -1,5 +1,5 @@
 package MooseX::Role::WithOverloading;
-
+# ABSTRACT: Roles which support overloading
 use Moose::Role ();
 use Moose::Exporter;
 use Moose::Util::MetaRole;
@@ -26,3 +26,24 @@ sub init_meta {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+    package MyRole;
+    use Moose::Role;
+    use namespace::autoclean;
+
+    with 'MooseX::Role::WithOverloading';
+
+=head1 DESCRIPTION
+
+FIXME
+
+=begin Pod::Coverage
+
+init_meta
+
+=end Pod::Coverage
+
+=cut
+

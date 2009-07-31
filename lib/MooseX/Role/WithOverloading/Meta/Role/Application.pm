@@ -1,5 +1,5 @@
 package MooseX::Role::WithOverloading::Meta::Role::Application;
-
+# ABSTRACT: Roles which support overloading
 use Moose::Role;
 use overload ();
 use MooseX::Types::Moose qw/ArrayRef Str/;

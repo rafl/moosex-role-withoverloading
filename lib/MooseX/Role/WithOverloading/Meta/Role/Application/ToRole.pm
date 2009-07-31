@@ -1,5 +1,5 @@
 package MooseX::Role::WithOverloading::Meta::Role::Application::ToRole;
-
+# ABSTRACT: Roles which support overloading
 use Moose::Role;
 use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::ToClass';
 use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::ToInstance';
