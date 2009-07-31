@@ -41,19 +41,19 @@ sub apply_overloading {
         my $meth = $role->get_package_symbol($code_sym);
         next unless $meth;
 
-        # use overload $op => 'method_name';
+        # when using "use overload $op => sub { };" this is the actual method
+        # to be called on overloading. otherwise it's \&overload::nil. see
+        # below.
+        $other->add_package_symbol($code_sym => $meth);
+
+        # when using "use overload $op => 'method_name';" overload::nil is
+        # installed into the code slot of the glob and the actual method called
+        # is determined by the scalar slot of the same glob.
         if ($meth == \&overload::nil) {
             my $scalar_sym = qq{\$($op};
-            # overload::nil as the predicate for overloading with a method name
-            $other->add_package_symbol($code_sym => $meth);
-            # and the actual method name in the scalar slot of the same glob
             $other->add_package_symbol(
                 $scalar_sym => ${ $role->get_package_symbol($scalar_sym) },
             );
-        }
-        # use overload $op => sub { ... };
-        else {
-            $other->add_package_symbol($code_sym => $meth);
         }
     }
 }
