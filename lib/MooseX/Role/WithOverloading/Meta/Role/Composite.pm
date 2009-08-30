@@ -17,7 +17,7 @@ Wrapped method to apply various metaclass roles to aid with role composition.
 around apply_params => sub {
     my ($next, $self, @args) = @_;
     return Moose::Util::MetaRole::apply_metaclass_roles(
-        for                                 => $self->$next(@args),
+        for_class                           => $self->$next(@args),
         application_to_class_class_roles    => [ ToClass    ],
         application_to_role_class_roles     => [ ToRole     ],
         application_to_instance_class_roles => [ ToInstance ],
