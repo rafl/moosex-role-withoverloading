@@ -30,14 +30,36 @@ sub init_meta {
 =head1 SYNOPSIS
 
     package MyRole;
-    use Moose::Role;
+    use MooseX::Role::WithOverloading;
     use namespace::autoclean;
 
-    with 'MooseX::Role::WithOverloading';
+    use overload
+        q{""}    => 'as_string',
+        fallback => 1;
+
+    has message => (
+        is       => 'rw',
+        isa      => 'Str',
+    );
+
+    sub as_string { shift->message }
+
+    package MyClass;
+    use Moose;
+    use namespace::autoclean;
+
+    with 'MyRole';
+
+    package main;
+
+    my $i = MyClass->new( message => 'foobar' );
+    print $i; # Prints 'foobar'
 
 =head1 DESCRIPTION
 
-FIXME
+MooseX::Role::WithOverloading allows you to write a L<Moose::Role>
+which uses operator overloading to overload any operation supported by the
+L<overload> pragma.
 
 =begin Pod::Coverage
 

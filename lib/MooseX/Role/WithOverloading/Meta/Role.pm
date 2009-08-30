@@ -10,9 +10,4 @@ has '+composition_class_roles' => (
 
 1;
 
-=head1 DESCRIPTION
-
-FIXME
-
-=cut
 

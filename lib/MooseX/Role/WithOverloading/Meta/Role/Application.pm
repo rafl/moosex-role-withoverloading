@@ -1,9 +1,17 @@
 package MooseX::Role::WithOverloading::Meta::Role::Application;
-# ABSTRACT: Roles which support overloading
+# ABSTRACT: Role application role for Roles which support overloading
 use Moose::Role;
 use overload ();
 use MooseX::Types::Moose qw/ArrayRef Str/;
 use namespace::autoclean;
+
+requires 'apply_methods';
+
+=method overload_ops
+
+Returns an arrayref of the names of overloaded operations
+
+=cut
 
 has overload_ops => (
     is      => 'ro',
@@ -15,10 +23,24 @@ sub _build_overload_ops {
     return [map { split /\s+/ } values %overload::ops];
 }
 
+=method apply_methods ($role, $other)
+
+Wrapped with an after modifier which calls the C<< ->apply_overloading >>
+method.
+
+=cut
+
 after apply_methods => sub {
     my ($self, $role, $other) = @_;
     $self->apply_overloading($role, $other);
 };
+
+=method apply_overloading ($role, $other)
+
+Does the heavy lifting of applying overload operations to
+a class or role which the role is applied to.
+
+=cut
 
 sub apply_overloading {
     my ($self, $role, $other) = @_;
