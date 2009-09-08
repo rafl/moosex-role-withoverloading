@@ -1,5 +1,6 @@
 package MooseX::Role::WithOverloading;
 # ABSTRACT: Roles which support overloading
+
 use Moose::Role ();
 use Moose::Exporter;
 use Moose::Util::MetaRole;
@@ -31,7 +32,6 @@ sub init_meta {
 
     package MyRole;
     use MooseX::Role::WithOverloading;
-    use namespace::autoclean;
 
     use overload
         q{""}    => 'as_string',
@@ -57,9 +57,10 @@ sub init_meta {
 
 =head1 DESCRIPTION
 
-MooseX::Role::WithOverloading allows you to write a L<Moose::Role>
-which uses operator overloading to overload any operation supported by the
-L<overload> pragma.
+MooseX::Role::WithOverloading allows you to write a L<Moose::Role> which
+defines overloaded operators and allows those operator overloadings to be
+composed into the classes/roles/instances it's compiled to, while plain
+L<Moose::Role>s would lose the overloading.
 
 =begin Pod::Coverage
 
@@ -68,4 +69,3 @@ init_meta
 =end Pod::Coverage
 
 =cut
-
