@@ -1,2 +1,5 @@
+0.02  Sun Oct 11 08:37:43 CEST 2009
+  * Fix missing dependency on MooseX::Types (Closes: RT#50386).
+
 0.01  Wed, 07 Oct 2009 00:22:14 +0200
   * Initial release.
