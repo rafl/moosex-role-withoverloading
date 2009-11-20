@@ -3,9 +3,10 @@ package MooseX::Role::WithOverloading::Meta::Role::Application::FixOverloadedRef
 use Moose::Role;
 use namespace::autoclean;
 
-after apply => sub {
-    reset_amagic($_[2]);
-    ();
-};
+if ($] < 5.008009) {
+    after apply => sub {
+        reset_amagic($_[2]);
+    };
+}
 
 1;
