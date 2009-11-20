@@ -55,4 +55,7 @@ void
 reset_amagic (rv)
         SV *rv
     CODE:
-        S_reset_amagic (rv, TRUE);
+        if (Gv_AMG (SvSTASH (SvRV (rv))) && !SvAMAGIC (rv)) {
+            SvAMAGIC_on (rv);
+            S_reset_amagic (rv, TRUE);
+        }
