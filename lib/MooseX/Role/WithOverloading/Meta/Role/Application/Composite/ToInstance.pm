@@ -4,6 +4,9 @@ package MooseX::Role::WithOverloading::Meta::Role::Application::Composite::ToIns
 use Moose::Role;
 use namespace::autoclean;
 
-with 'MooseX::Role::WithOverloading::Meta::Role::Application::Composite';
+with qw(
+    MooseX::Role::WithOverloading::Meta::Role::Application::Composite
+    MooseX::Role::WithOverloading::Meta::Role::Application::FixOverloadedRefs
+);
 
 1;
