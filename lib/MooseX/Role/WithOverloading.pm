@@ -1,6 +1,7 @@
 package MooseX::Role::WithOverloading;
 # ABSTRACT: Roles which support overloading
 
+use XSLoader;
 use Moose::Role ();
 use Moose::Exporter;
 use Moose::Util::MetaRole;
@@ -10,6 +11,8 @@ use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::ToRole';
 use aliased 'MooseX::Role::WithOverloading::Meta::Role::Application::ToInstance';
 
 use namespace::clean;
+
+XSLoader::load(__PACKAGE__, $VERSION);
 
 Moose::Exporter->setup_import_methods(also => 'Moose::Role');
 

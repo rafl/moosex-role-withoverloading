@@ -10,5 +10,3 @@ has '+composition_class_roles' => (
 );
 
 1;
-
-
