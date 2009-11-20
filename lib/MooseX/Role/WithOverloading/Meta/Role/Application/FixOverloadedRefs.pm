@@ -9,4 +9,12 @@ if ($] < 5.008009) {
     };
 }
 
+=begin Pod::Coverage
+
+reset_amagic
+
+=end Pod::Coverage
+
+=cut
+
 1;
