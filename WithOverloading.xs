@@ -57,5 +57,5 @@ reset_amagic (rv)
     CODE:
         if (Gv_AMG (SvSTASH (SvRV (rv))) && !SvAMAGIC (rv)) {
             SvAMAGIC_on (rv);
-            S_reset_amagic (rv, TRUE);
+            S_reset_amagic (aTHX_ rv, TRUE);
         }
