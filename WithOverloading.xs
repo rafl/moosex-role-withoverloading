@@ -51,6 +51,8 @@ S_reset_amagic (pTHX_ SV *rv, const bool on)
 
 MODULE = MooseX::Role::WithOverloading PACKAGE = MooseX::Role::WithOverloading::Meta::Role::Application::FixOverloadedRefs
 
+PROTOTYPES: DISABLE
+
 void
 reset_amagic (rv)
         SV *rv
