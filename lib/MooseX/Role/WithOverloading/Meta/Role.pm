@@ -5,8 +5,9 @@ use Moose::Role;
 use aliased 'MooseX::Role::WithOverloading::Meta::Role::Composite', 'CompositionRole';
 use namespace::autoclean;
 
-has '+composition_class_roles' => (
-    default => [ CompositionRole ],
-);
+around composition_class_roles => sub {
+    my ($orig, $self) = @_;
+    return $self->$orig, CompositionRole;
+};
 
 1;
