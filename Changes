@@ -1,3 +1,6 @@
+0.04  Mon, 04 Jan 2010 18:40:11 +0100
+  * Depend on Test::More 0.88 for done_testing.
+
 0.03  Fri, 20 Nov 2009 07:57:25 +0100
   * Make ToInstance application work on perl older than 5.8.9.
 
