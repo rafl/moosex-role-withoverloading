@@ -1,3 +1,4 @@
+0.05  Sat, 18 Jan 2010 18:15:00 +0000
   * Work around changes in composition_class_role in Moose >= 0.93_01
     to be compatible with both old and new Moose versions.
 
