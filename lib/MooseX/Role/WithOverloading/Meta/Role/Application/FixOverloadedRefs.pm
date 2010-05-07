@@ -1,4 +1,5 @@
 package MooseX::Role::WithOverloading::Meta::Role::Application::FixOverloadedRefs;
+# ABSTRACT: Fix up magic when applying roles to instances with magic on old perls
 
 use Moose::Role;
 use namespace::autoclean;
