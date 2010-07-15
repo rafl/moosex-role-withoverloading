@@ -1,3 +1,6 @@
+0.07
+  * Avoid warnings from Moose 1.09 (Dave Rolsky).
+
 0.06  Fri, 07 May 2010 19:00:11 +0200
   * Improve distribution metadata.
   * Disable workaround for Moose < 0.94 and bump the dependency version.

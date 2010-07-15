@@ -20,12 +20,14 @@ sub init_meta {
     my ($class, %opts) = @_;
     my $meta = Moose::Role->init_meta(%opts);
 
-    return Moose::Util::MetaRole::apply_metaclass_roles(
-        for_class                           => $meta,
-        metaclass_roles                     => [ MetaRole   ],
-        application_to_class_class_roles    => [ ToClass    ],
-        application_to_role_class_roles     => [ ToRole     ],
-        application_to_instance_class_roles => [ ToInstance ],
+    return Moose::Util::MetaRole::apply_metaroles(
+        for            => $meta,
+        role_metaroles => {
+            role                    => [MetaRole],
+            application_to_class    => [ToClass],
+            application_to_role     => [ToRole],
+            application_to_instance => [ToInstance],
+        },
     );
 }
 
