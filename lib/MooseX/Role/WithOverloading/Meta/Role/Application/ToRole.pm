@@ -12,11 +12,13 @@ around apply => sub {
     my ($next, $self, $role1, $role2) = @_;
     return $self->$next(
         $role1,
-        Moose::Util::MetaRole::apply_metaclass_roles(
-            for_class                           => $role2,
-            application_to_class_class_roles    => [ ToClass     ],
-            application_to_role_class_roles     => [ __PACKAGE__ ],
-            application_to_instance_class_roles => [ ToInstance  ],
+        Moose::Util::MetaRole::apply_metaroles(
+            for            => $role2,
+            role_metaroles => {
+                application_to_class    => [ToClass],
+                application_to_role     => [__PACKAGE__],
+                application_to_instance => [ToInstance],
+            },
         ),
     );
 };

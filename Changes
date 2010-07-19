@@ -1,3 +1,5 @@
+  * Really avoid warnings from Moose 1.09 (Dave Rolsky).
+
 0.07  Mon, 19 Jul 2010 05:56:05 +0200
   * Avoid warnings from Moose 1.09 (Dave Rolsky).
 
