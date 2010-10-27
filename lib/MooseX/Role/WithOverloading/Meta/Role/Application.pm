@@ -1,7 +1,7 @@
 package MooseX::Role::WithOverloading::Meta::Role::Application;
 # ABSTRACT: Role application role for Roles which support overloading
 
-use Moose::Role;
+use Moose::Role 1.15;
 use overload ();
 use MooseX::Types::Moose qw/ArrayRef Str/;
 use namespace::autoclean;
@@ -53,7 +53,7 @@ sub apply_overloading {
     $other->add_package_symbol('$()' => $role->get_package_symbol('$()'))
         if $role->has_package_symbol('$()');
     # register with magic by touching
-    $other->get_package_symbol('%OVERLOAD')->{dummy}++;
+    $other->get_or_add_package_symbol('%OVERLOAD')->{dummy}++;
 
     for my $op (@{ $self->overload_ops }) {
         my $code_sym = '&(' . $op;
